@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+hr{
+  opacity:55%;
+}
+
+.shade {
+  color: #ffffff;
+  text-shadow: 0 0 3px #fbfbf6, 0 0 15px rgb(168, 103, 46), 0 0 25px rgb(172, 101, 9), 0 0 40px rgb(255, 253, 250);
+}
+
+@theme {
+  /* 105deg gives a subtle, modern diagonal tilt from left to right */
+  --background-image-hero-gradient: linear-gradient(100deg,#FFCE1B 0%,#FFCE1B 100%);
+}
+
+@layer base {
+  html, body { min-height: 100vh; }
+  body {
+    @apply bg-hero-gradient bg-fixed text-white p-2 font-mono;
+  }
+}
