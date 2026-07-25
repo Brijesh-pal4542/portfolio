@@ -3,8 +3,17 @@ import back from "../src/assets/back.png";
 
 function Navbar() {
   const [visible, setVisible] = useState(false);
+  const menuItems = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Certificates", href: "#certificates" },
+    { name: "Contact", href: "#contact" },
+  ];
   return (
     <div className="flex flex-wrap justify-between h-12 w-full md:h-13">
+      {/*-----Navlinks to home, about etc.-----*/}
       <div className="flex h-full w-[60%] md:min-w-175 bg-[#800020c9] p-1 rounded-full font-extrabold">
         <img
           className="h-full w-10 mr-0.5 md:w-13 rounded-full border-2"
@@ -37,14 +46,18 @@ function Navbar() {
           </ul>
         </div>
       </div>
+
+      {/*-------Menu button for small screen-------*/}
       <button
         onClick={() => setVisible(!visible)}
         className="md:hidden text-2xl font-bold h-full bg-amber-900 opacity-90 p-1 rounded cursor-pointer shade hover:bg-amber-700 duration-900"
       >
         &#9776;
       </button>
+
+      {/*------Menu links for small screen------*/}
       <div
-        className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-amber-400 shade transition-all ${visible ? "w-full" : "w-0"}`}
+        className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-amber-400 shade transition-all ${visible ? "w-full" : "w-0"} duration-500`}
       >
         <div
           onClick={() => setVisible(false)}
@@ -54,13 +67,23 @@ function Navbar() {
           <p>Back</p>
         </div>
         <ul>
-          <hr/>
-          <li onClick={()=>setVisible(!visible)} className="py-2 pl-6 hover:bg-amber-300 duration-990"><a href="#home">Home</a></li><hr/>
-          <li onClick={()=>setVisible(!visible)} className="py-2 pl-6 hover:bg-amber-300 duration-990"><a href="#about">About</a></li><hr/>
-          <li onClick={()=>setVisible(!visible)} className="py-2 pl-6 hover:bg-amber-300 duration-990"><a href="#skills">Skills</a></li><hr/>
-          <li onClick={()=>setVisible(!visible)} className="py-2 pl-6 hover:bg-amber-300 duration-990"><a href="#projects">Projects</a></li><hr/>
-          <li onClick={()=>setVisible(!visible)} className="py-2 pl-6 hover:bg-amber-300 duration-990"><a href="#certificates">Certificates</a></li><hr/>
-          <li onClick={()=>setVisible(!visible)} className="py-2 pl-6 hover:bg-amber-300 duration-990"><a href="#contact">Contact</a></li><hr/>
+          <hr />
+
+          {menuItems.map((item, index) => (
+            <div key={item.name}>
+              <li
+                onClick={() => setVisible(false)}
+                style={{
+                  animationDelay: visible ? `${index * 120}ms` : "0ms",
+                }}
+                className={`py-2 pl-6 hover:bg-amber-300 transition-colors duration-300 cursor-pointer ${visible ? "opacity-0 animate-nav-enter" :"opacity-100"}`}
+              >
+                <a href={item.href}>{item.name}</a>
+              </li>
+
+              <hr />
+            </div>
+          ))}
         </ul>
       </div>
     </div>
