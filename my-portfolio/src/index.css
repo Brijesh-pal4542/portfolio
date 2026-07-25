@@ -77,3 +77,9 @@ hr{
     opacity:0;
   }
 }
+
+/*----float logic-----*/
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); } /* Moves up 15px at the midpoint */
+}

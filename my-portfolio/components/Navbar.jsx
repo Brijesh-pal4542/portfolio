@@ -14,16 +14,16 @@ function Navbar() {
   return (
     <div className="flex flex-wrap justify-between md:justify-evenly h-12 w-full md:h-13">
       {/*-----Navlinks to home, about etc.-----*/}
-      <div className="flex h-full w-[60%] md:min-w-175 bg-amber-800 p-1 rounded-full font-extrabold shadow-sm shadow-amber-800">
+      <div className="flex h-full w-[60%] md:min-w-175 bg-amber-500 p-1 rounded-full font-extrabold shadow-sm shadow-amber-800">
         <img
-          className="h-full w-10 mr-0.5 md:w-13 rounded-full border-2"
+          className="h-full w-10 mr-0.5 md:w-13 rounded-full border-2 border-amber-700"
           src="logo_B.jpg"
           alt=""
         ></img>
-        <div className="md:hidden flex justify-center py-1.5 h-full w-full bg-amber-700 rounded-full border-2 shade cursor-pointer">
+        <div className="md:hidden flex justify-center py-1.5 h-full w-full bg-amber-600 rounded-full border-2 border-amber-700 shade cursor-pointer">
           Brijesh Pal
         </div>
-        <div className="max-md:hidden flex justify-center py-0.5 h-full w-full bg-[#800020c9] rounded-full border-2 shade">
+        <div className="max-md:hidden flex justify-center py-0.5 h-full w-full bg-amber-600 rounded-full border-2 border-amber-700 shade">
           <ul className="flex w-full justify-evenly">
             <li className="p-2 rounded-full hover:text-amber-200">
               <a href="#home">Home</a>
@@ -50,7 +50,7 @@ function Navbar() {
       {/*-------Menu button for small screen-------*/}
       <button
         onClick={() => setVisible(!visible)}
-        className="md:hidden text-2xl font-bold h-full bg-amber-800 opacity-90 p-1 rounded cursor-pointer shade hover:bg-amber-700 duration-700"
+        className="md:hidden text-2xl font-bold h-full bg-amber-800 opacity-90 p-1 rounded cursor-pointer shade shadow-md shadow-amber-800 hover:bg-amber-700 duration-300"
       >
         &#9776;
       </button>
