@@ -47,7 +47,7 @@ function Hero() {
         <h1 className="text-4xl md:text-6xl font-extrabold text-shadow-sm text-shadow-amber-800 text-amber-950">
           I'm Brijesh Pal,
         </h1>
-        <div className="h-30">
+        <div className="h-40">
           <p className="font-normal text-4xl md:6xl">Web Developer</p>
           <p className="my-3 font-medium text-amber-600">{displayText}</p>
         </div>
