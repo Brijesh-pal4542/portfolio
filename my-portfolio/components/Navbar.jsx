@@ -12,7 +12,7 @@ function Navbar() {
     { name: "Contact", href: "#contact" },
   ];
   return (
-    <div className="flex flex-wrap justify-between md:justify-evenly h-12 w-full md:h-13">
+    <div className="flex flex-wrap justify-between md:justify-evenly h-12 w-full md:h-13 stick z-1">
       {/*-----Navlinks to home, about etc.-----*/}
       <div className="flex h-full w-[60%] md:min-w-175 bg-amber-500 p-1 rounded-full font-extrabold shadow-sm shadow-amber-800">
         <img
@@ -23,8 +23,8 @@ function Navbar() {
         <div className="md:hidden flex justify-center py-1.5 h-full w-full bg-amber-600 rounded-full border-2 border-amber-700 shade cursor-pointer">
           Brijesh Pal
         </div>
-        <div className="max-md:hidden flex justify-center py-0.5 h-full w-full bg-amber-600 rounded-full border-2 border-amber-700 shade">
-          <ul className="flex w-full justify-evenly">
+        <div className="max-md:hidden flex justify-center h-full w-full bg-amber-600 rounded-full border-2 border-amber-700 shade">
+          <ul className="flex w-full justify-evenly text-xl">
             <li className="p-2 rounded-full hover:text-amber-200">
               <a href="#home">Home</a>
             </li>

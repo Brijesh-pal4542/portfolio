@@ -32,10 +32,10 @@ function Hero() {
   }, [textIndex]);
 
   return (
-    <div className="h-170 w-full my-5 dot-grid  md:flex px-5 md:justify-evenly">
-      <div className="flex my-6 max-md:justify-center md:items-center h-[50%] md:h-full md:m-10 p-1 bg-amber-700 rounded-full dot-grid shadow-md shadow-amber-700 hover:-translate-y-1.5 duration-600">
+    <div className="h-170 w-full my-5 dot-grid  md:flex px-5 md:justify-evenly shadow-2xl rounded-full">
+      <div className="flex my-6 max-md:justify-center md:items-center h-[50%] md:h-[90%] md:m-10 p-1 bg-amber-700 rounded-full dot-grid shadow-md shadow-amber-700 hover:-translate-y-1.5 duration-600">
         <img
-          className="h-full rounded-full md:h-[90%] shadow-2xl shadow-amber-400 hover:translate-y-1.5 duration-600"
+          className="h-full rounded-full md:h-[80%] shadow-2xl shadow-amber-400 hover:translate-y-1.5 duration-600"
           src={hero_image}
           alt=""
         />
@@ -49,7 +49,7 @@ function Hero() {
         </h1>
         <div className="h-40">
           <p className="font-normal text-4xl md:6xl">Web Developer</p>
-          <p className="my-3 font-medium text-amber-600">{displayText}</p>
+          <p className="my-3 h-40 font-medium text-amber-600">{displayText}</p>
         </div>
         <div className="my-5">
           <button className="mx-3 bg-amber-800 py-2 px-5 rounded-full cursor-pointer md:text-xl shadow-md shadow-amber-900 hover:-translate-y-1.5 duration-500">
