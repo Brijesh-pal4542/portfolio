@@ -21,7 +21,7 @@ function Navbar() {
           alt=""
         ></img>
         <div className="md:hidden flex justify-center py-1.5 h-full w-full bg-amber-600 rounded-full border-2 border-amber-700 shade cursor-pointer">
-          Brijesh Pal
+          #Brijesh Pal
         </div>
         <div className="max-md:hidden flex justify-center h-full w-full bg-amber-600 rounded-full border-2 border-amber-700 shade">
           <ul className="flex w-full justify-evenly text-xl">
@@ -57,7 +57,7 @@ function Navbar() {
 
       {/*------Menu links for small screen------*/}
       <div
-        className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-amber-400 shade transition-all ${visible ? "w-full" : "w-0"} duration-500`}
+        className={`fixed top-0 right-0 h-screen z-50 overflow-hidden bg-amber-400 shade transition-all ${visible ? "w-full" : "w-0"} duration-500 overscroll-none`}
       >
         <div
           onClick={() => setVisible(false)}
