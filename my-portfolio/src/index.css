@@ -67,17 +67,6 @@ hr{
   }
 }
 
-/*----Blink effect------*/
-@theme{
-  --animate-cursor:cursor .8s step-end infinite;
-}
-
-@keyframes cursor{
-  50%{
-    opacity:0;
-  }
-}
-
 /*----float logic-----*/
 @keyframes float {
   0%, 100% { transform: translateY(0); }

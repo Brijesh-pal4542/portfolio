@@ -12,7 +12,7 @@ function Navbar() {
     { name: "Contact", href: "#contact" },
   ];
   return (
-    <div className="flex flex-wrap justify-between md:justify-evenly h-12 w-full md:h-13 stick z-1">
+    <div className="flex flex-wrap justify-between md:justify-evenly h-12 w-full md:h-13">
       {/*-----Navlinks to home, about etc.-----*/}
       <div className="flex h-full w-[60%] md:min-w-175 bg-amber-500 p-1 rounded-full font-extrabold shadow-sm shadow-amber-800">
         <img
