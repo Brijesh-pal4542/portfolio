@@ -1,13 +1,13 @@
 function About() {
   return (
     <div className="my-15 max-sm:mt-25">
-      <div className="text-center block text-5xl border-l-4 bg-linear-to-r from-amber-800 to bg-amber-400 font-bold shade md:text-6xl">
+      <div className="text-center block text-5xl border-l-4 bg-linear-to-r from-amber-800 to bg-amber-400 font-bold shade md:text-6xl mb-2">
         About me
       </div>
       <div className="w-full md:flex md:gap-1">
-        <div className="h-[50%] w-full md:w-[50%] md:h-full rounded-r-full dot-grid shadow-2xl p-7 font-serif text-amber-800">
+        <div className="h-[50%] w-full md:w-[50%] md:h-full rounded-r-full dot-grid shadow-2xl p-7 font-serif text-amber-800 max-sm:rounded-b-full">
           <p className="md:text-xl">
-            I'm <span className="shade">Brijesh Pal,</span> driven by curiosity,
+            Hi, my name is <span className="shade">Brijesh Pal</span> and i'm CSE (AIML) student. I'm driven by curiosity,
             creativity and continuous growth.
           </p>
           <p className="md:text-xl mt-5">
@@ -26,11 +26,11 @@ function About() {
             learning because I believe the best developers never stop being
             students.
           </p>
-          <button className="mx-3 bg-amber-800 py-2 px-5 rounded-full cursor-pointer md:text-xl shadow-md shadow-amber-900 hover:-translate-y-1.5 duration-500 text-white mt-5 max-sm:hidden">
+          <button className="mx-3 bg-amber-800 py-2 px-5 rounded-full cursor-pointer md:text-xl shadow-md shadow-amber-900 hover:-translate-y-1.5 duration-500 text-white mt-5">
             Get In Touch
           </button>
         </div>
-        <div className="w-full dot-grid md:w-[50%] rounded-l-full shadow-2xl text-right p-7">
+        <div className="w-full dot-grid md:w-[50%] rounded-l-full shadow-2xl text-right p-7 max-sm:hidden">
           <button className="py-1.5 px-4 border-2 border-amber-800 rounded-full md:text-xl bg-amber-500 shadow-md shadow-amber-600 hover:-translate-y-2 duration-500 hover:bg-amber-800 m-2.5">
             🔍 Curious Learner
           </button>

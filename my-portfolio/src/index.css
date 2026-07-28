@@ -72,3 +72,25 @@ hr{
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-15px); } /* Moves up 15px at the midpoint */
 }
+
+/*-----traslate cards from L to R & vice versa------*/
+@theme{
+  --animate-marquee: marquee 22s linear infinite;
+  --animate-marquee-reverse: marqueeReverse 22s linear infinite;
+}
+@keyframes marquee{
+  from{
+    transform:translateX(0);
+  }
+  to{
+    transform:translateX(calc(-100% / 6));
+  }
+}
+@keyframes marqueeReverse{
+  from{
+    transform:translateX(calc(-100% / 6));
+  }
+  to{
+    transform:translateX(0);
+  }
+}
