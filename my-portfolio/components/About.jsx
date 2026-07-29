@@ -35,7 +35,7 @@ function About() {
             🔍 Curious Learner
           </button>
           <button className="py-1.5 px-4 border-2 border-amber-800 rounded-full md:text-xl bg-amber-500 shadow-md shadow-amber-600 hover:-translate-y-2 duration-500 hover:bg-amber-800 m-2.5">
-            🎯 Purpose Driven
+            🎯 160+ Leetcode problems solved
           </button>
           <button className="py-1.5 px-4 border-2 border-amber-800 rounded-full md:text-xl bg-amber-500 shadow-md shadow-amber-600 hover:-translate-y-2 duration-500 hover:bg-amber-800 m-2.5">
             💻 MERN Stack
@@ -44,7 +44,7 @@ function About() {
             🧩 Data Structure and Algorithm
           </button>
           <button className="py-1.5 px-4 border-2 border-amber-800 rounded-full md:text-xl bg-amber-500 shadow-md shadow-amber-600 hover:-translate-y-2 duration-500 hover:bg-amber-800 m-2.5">
-            🏗️ Scalable Applications
+            🏗️ Scalable Web Applications
           </button>
           <button className="py-1.5 px-4 border-2 border-amber-800 rounded-full md:text-xl bg-amber-500 shadow-md shadow-amber-600 hover:-translate-y-2 duration-500 hover:bg-amber-800 m-2.5">
             🎯 Detail Oriented
@@ -60,6 +60,7 @@ function About() {
           </button>
         </div>
       </div>
+      
     </div>
   );
 }
