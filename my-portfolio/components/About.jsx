@@ -1,14 +1,15 @@
 function About() {
   return (
-    <div className="my-15 max-sm:mt-25">
+    <div className="my-15 max-sm:my-25">
       <div className="text-center block text-5xl border-l-4 bg-linear-to-r from-amber-800 to bg-amber-400 font-bold shade md:text-6xl mb-2">
         About me
       </div>
       <div className="w-full md:flex md:gap-1">
         <div className="h-[50%] w-full md:w-[50%] md:h-full rounded-r-full dot-grid shadow-2xl p-7 font-serif text-amber-800 max-sm:rounded-b-full">
           <p className="md:text-xl">
-            Hi, my name is <span className="shade">Brijesh Pal</span> and i'm CSE (AIML) student. I'm driven by curiosity,
-            creativity and continuous growth.
+            Hi, my name is <span className="shade">Brijesh Pal</span> and i'm
+            CSE (AIML) student. I'm driven by curiosity, creativity and
+            continuous growth.
           </p>
           <p className="md:text-xl mt-5">
             I enjoy transforming ideas into meaningful digital experiences using
@@ -60,7 +61,6 @@ function About() {
           </button>
         </div>
       </div>
-      
     </div>
   );
 }
