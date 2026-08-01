@@ -1,5 +1,6 @@
 import { useState } from "react";
 import back from "../src/assets/back.png";
+import logo from "../src/assets/logo_B.jpg";
 
 function Navbar() {
   const [visible, setVisible] = useState(false);
@@ -17,7 +18,7 @@ function Navbar() {
       <div className="flex h-full w-[60%] md:min-w-175 bg-amber-500 p-1 rounded-full font-extrabold shadow-sm shadow-amber-800">
         <img
           className="h-full w-10 mr-0.5 md:w-13 rounded-full border-2 border-amber-700"
-          src="logo_B.jpg"
+          src={logo}
           alt=""
         ></img>
         <div className="md:hidden flex justify-center py-1.5 h-full w-full bg-amber-600 rounded-full border-2 border-amber-700 shade cursor-pointer">
