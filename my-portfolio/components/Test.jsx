@@ -23,17 +23,16 @@ const Test = () => {
             <>
             <img
               src={section.img}
-              className="absolute inset-0 w-full h-full object-cover max-md:hidden"
+              className="absolute inset-0 w-full h-full object-cover max-md:hidden rounded-full"
             />
             <img
               src={section.img_sm}
-              className="absolute inset-0 w-full h-full object-cover md:hidden"
+              className="absolute inset-0 w-full h-full object-cover md:hidden rounded-full"
             />
             </>
           )}
         </div>
       ))}
-      Thsi is app
     </div>
   );
 };

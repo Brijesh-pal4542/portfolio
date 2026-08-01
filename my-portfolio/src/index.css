@@ -20,6 +20,12 @@ hr{
 }
 
 @layer base {
+  section {
+    scroll-margin-top: 4.5rem; /* roughly navbar height + breathing room */
+  }
+  html{
+    scroll-behavior:smooth;
+  }
   html, body { min-height: 100vh; }
   body {
     @apply bg-hero-gradient bg-fixed text-white p-2 font-mono;

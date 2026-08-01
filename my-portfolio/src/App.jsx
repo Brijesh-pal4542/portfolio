@@ -11,8 +11,8 @@ function App() {
       <Navbar></Navbar>
       <Hero></Hero>
       <About></About>
-      <Test></Test>
       <Skills></Skills>
+      <Test></Test>
       <div className="h-100"></div>
    </div>
   )

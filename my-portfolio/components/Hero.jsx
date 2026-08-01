@@ -4,80 +4,162 @@ import leetcode from "../src/assets/leetcode.png";
 import linkedin from "../src/assets/linkedin.jpg";
 import { useState, useEffect } from "react";
 
+const texts = [
+  "// Building impactful web experiences through clean code, thoughtful design, and continuous innovation.",
+  "// Learning relentlessly, coding passionately, and building solutions that create real-world impact.",
+];
+
+const socials = [
+  {
+    name: "GitHub",
+    href: "https://github.com/Brijesh-pal4542",
+    icon: github,
+    delay: "0s",
+    round: false,
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/brijesh-pal-460b44378/",
+    icon: linkedin,
+    delay: "0.5s",
+    round: true,
+  },
+  {
+    name: "LeetCode",
+    href: "https://leetcode.com/u/Brijesh_Pal/",
+    icon: leetcode,
+    delay: "0.10s",
+    round: true,
+  },
+];
+
 function Hero() {
-  const texts = [
-    "// Building impactful web experiences through clean code, thoughtful design, and continuous innovation.",
-    "// Learning relentlessly, coding passionately, and building solutions that create real-world impact.",
-  ];
   const [textIndex, setTextIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
+  // Type-then-erase-then-next-line effect
   useEffect(() => {
-    let charIndex = 0;
+    const current = texts[textIndex];
+    const speed = isDeleting ? 30 : 55;
 
-    const interval = setInterval(() => {
-      setDisplayText(texts[textIndex].slice(0, charIndex + 1));
-      charIndex++;
-
-      if (charIndex === texts[textIndex].length) {
-        clearInterval(interval);
-
-        setTimeout(() => {
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        const next = current.slice(0, displayText.length + 1);
+        setDisplayText(next);
+        if (next === current) {
+          setTimeout(() => setIsDeleting(true), 1500);
+        }
+      } else {
+        const next = current.slice(0, displayText.length - 1);
+        setDisplayText(next);
+        if (next === "") {
+          setIsDeleting(false);
           setTextIndex((prev) => (prev + 1) % texts.length);
-        }, 1500);
+        }
       }
-    }, 60);
+    }, speed);
 
-    return () => clearInterval(interval);
-  }, [textIndex]);
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, textIndex]);
+
+  const scrollToProjects = (e) => {
+    e.preventDefault();
+    document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <div className="h-170 w-full my-5 dot-grid  md:flex px-5 md:justify-evenly shadow-2xl rounded-full">
-      <div className="flex my-6 max-md:justify-center md:items-center h-[50%] md:h-[90%] md:m-10 p-1 bg-amber-700 rounded-full dot-grid shadow-md shadow-amber-700 hover:-translate-y-1.5 duration-600">
+    <section
+      id="home"
+      className="h-auto md:h-170 w-full my-5 dot-grid md:flex px-5 md:justify-evenly shadow-2xl rounded-full"
+    >
+      {/* ---------- Profile image ---------- */}
+      <div className="flex my-6 max-md:justify-center md:items-center h-auto md:h-[90%] md:m-10 p-1 bg-amber-700 rounded-full dot-grid shadow-md shadow-amber-700 hover:-translate-y-1.5 duration-600">
         <img
-          className="h-full rounded-full md:h-[80%] shadow-2xl shadow-amber-400 hover:translate-y-1.5 duration-600"
+          className="h-64 md:h-[80%] rounded-full shadow-2xl shadow-amber-400 hover:translate-y-1.5 duration-600 object-cover"
           src={hero_image}
-          alt=""
+          alt="Portrait of Brijesh Pal"
         />
       </div>
-      <div className="flex flex-col max-md:text-center md:justify-center h-[50%] w-full md:h-full md:w-[50%] max-md:mt-3 md:ml-10">
-        <h4 className="font-bold shade">
-          Hello there<span className="font-normal">...</span>
-        </h4>
-        <h1 className="text-4xl md:text-6xl font-extrabold text-shadow-sm text-shadow-amber-800 text-amber-950">
-          I'm Brijesh Pal,
+
+      {/* ---------- Text content ---------- */}
+      <div className="flex flex-col max-md:text-center md:justify-center h-auto w-full md:h-full md:w-[50%] max-md:mt-3 md:ml-10">
+        {/* Eyebrow — same tracked-caps treatment as the About section,
+            so both sections read as one designed system */}
+        <p className="text-sm md:text-base font-bold tracking-[0.3em] uppercase text-amber-700 mb-2 max-md:mb-1">
+          Hello there
+        </p>
+
+        {/* Name — serif + two-tone split, mirroring About's heading style */}
+        <h1 className="font-serif text-5xl md:text-7xl font-bold text-amber-950 text-shadow-sm text-shadow-amber-800 leading-tight">
+          I'm Brijesh Pal
+          <span className="block shade italic text-4xl md:text-6xl mt-1">
+            Web Developer
+          </span>
         </h1>
-        <div className="h-40">
-          <p className="font-normal text-4xl md:6xl">Web Developer</p>
-          <p className="my-3 h-40 font-medium text-amber-600">{displayText}</p>
+
+        {/* Divider — line–dot–line, echoing the circular theme
+            (logo, buttons, social icons) instead of a plain rule */}
+        <div className="flex items-center gap-3 mt-5 max-md:justify-center">
+          <span className="h-[2px] w-10 md:w-16 bg-amber-800/60 rounded-full" />
+          <span className="h-2.5 w-2.5 rounded-full bg-amber-800 shade" />
         </div>
+
+        {/* Typewriter line */}
+        <div className="min-h-40">
+          <p className="my-4 min-h-16 font-medium text-amber-600">
+            {displayText}
+            <span className="ml-0.5 animate-pulse">▍</span>
+          </p>
+        </div>
+
+        {/* CTAs */}
         <div className="my-5">
-          <button className="mx-3 bg-amber-800 py-2 px-5 rounded-full cursor-pointer md:text-xl shadow-md shadow-amber-900 hover:-translate-y-1.5 duration-500">
+          <a
+            href="#projects"
+            onClick={scrollToProjects}
+            className="mx-3 inline-block bg-amber-800 py-2 px-5 rounded-full cursor-pointer md:text-xl shadow-md shadow-amber-900 hover:-translate-y-1.5 duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
+          >
             My Work
-          </button>
-          <button className="mx-3 py-1.5 px-4 border-2 border-amber-800 rounded-full cursor-grab md:text-xl shade bg-amber-500 shadow-md shadow-amber-600">
+          </a>
+          {/* swap href for your actual resume file path */}
+          <a
+            href="/resume.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-3 inline-block py-1.5 px-4 border-2 border-amber-800 rounded-full cursor-pointer md:text-xl shade bg-amber-500 shadow-md shadow-amber-600 hover:-translate-y-1.5 duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
+          >
             My Resume
-          </button>
+          </a>
         </div>
+
+        {/* Social icons */}
         <div className="h-12 flex gap-4 max-md:justify-center md:mx-5 my-3">
-          <div className="h-full w-12 animate-[float_3s_ease-in-out_0s_infinite] rounded-full shadow-xl shadow-slate-900/10 text-center">
-            <a href="https://github.com/Brijesh-pal4542">
-              <img src={github} alt="" />
-            </a>
-          </div>
-          <div className="h-full w-12 animate-[float_3s_ease-in-out_0.5s_infinite] rounded-full shadow-xl shadow-slate-900/10 text-center">
-            <a href="https://www.linkedin.com/in/brijesh-pal-460b44378/">
-              <img className="rounded-full" src={linkedin} alt="" />
-            </a>
-          </div>
-          <div className="h-full w-12 animate-[float_3s_ease-in-out_0.10s_infinite] rounded-full shadow-xl shadow-slate-900/10 text-center">
-            <a href="https://leetcode.com/u/Brijesh_Pal/">
-              <img className="rounded-full" src={leetcode} alt="" />
-            </a>
-          </div>
+          {socials.map((s) => (
+            <div
+              key={s.name}
+              style={{ animationDelay: s.delay }}
+              className="h-full w-12 animate-[float_3s_ease-in-out_infinite] rounded-full shadow-xl shadow-slate-900/10 text-center"
+            >
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.name}
+                className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 rounded-full block"
+              >
+                <img
+                  className={s.round ? "rounded-full" : ""}
+                  src={s.icon}
+                  alt={s.name}
+                />
+              </a>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
