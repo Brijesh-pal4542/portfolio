@@ -16,7 +16,7 @@ const menuItems = [
   { name: "About", href: "#about", icon: User },
   { name: "Skills", href: "#skills", icon: Code2 },
   { name: "Projects", href: "#projects", icon: FolderKanban },
-  { name: "Certificates", href: "#certificates", icon: Award },
+  { name: "Journey", href: "#journey", icon: Award },
   { name: "Contact", href: "#contact", icon: Mail },
 ];
 

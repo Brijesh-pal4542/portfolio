@@ -3,19 +3,26 @@ import { ExternalLink, FolderGit2 } from "lucide-react";
 import project1 from "../src/assets/project1.png";
 import project2 from "../src/assets/project2.png";
 
-
 // Lucide dropped brand icons (GitHub, etc.) — this is a minimal
 // inline replacement so we don't need an extra package just for one icon.
 function GithubIcon(props) {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" width={16} height={16} {...props}>
-      <path d="M12 .5C5.73.5.98 5.24.98 11.52c0 4.84 3.14 8.94 7.5 10.39.55.1.75-.24.75-.53
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      width={16}
+      height={16}
+      {...props}
+    >
+      <path
+        d="M12 .5C5.73.5.98 5.24.98 11.52c0 4.84 3.14 8.94 7.5 10.39.55.1.75-.24.75-.53
       0-.26-.01-1.13-.02-2.04-3.05.66-3.7-1.3-3.7-1.3-.5-1.27-1.22-1.6-1.22-1.6-1-.68.08-.67.08-.67
       1.1.08 1.68 1.13 1.68 1.13.98 1.68 2.57 1.2 3.2.91.1-.71.38-1.2.69-1.47-2.44-.28-5-1.22-5-5.42
       0-1.2.43-2.18 1.13-2.94-.11-.28-.49-1.4.11-2.92 0 0 .92-.3 3.02 1.12a10.4 10.4 0 0 1 5.5 0
       c2.1-1.42 3.02-1.12 3.02-1.12.6 1.52.22 2.64.11 2.92.7.76 1.13 1.74 1.13 2.94 0 4.21-2.56 5.14-5.01 5.41
       .39.34.74 1.02.74 2.06 0 1.49-.01 2.68-.01 3.05 0 .29.2.64.76.53
-      4.36-1.45 7.5-5.55 7.5-10.39C23.02 5.24 18.27.5 12 .5Z" />
+      4.36-1.45 7.5-5.55 7.5-10.39C23.02 5.24 18.27.5 12 .5Z"
+      />
     </svg>
   );
 }
@@ -130,7 +137,7 @@ function Projects() {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -164,6 +171,20 @@ function Projects() {
             inView={inView}
           />
         ))}
+      </div>
+
+      {/* ---------- View All Projects ---------- */}
+      <div className="text-center mt-12">
+        <a
+          href="https://github.com/Brijesh-pal4542"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border-2 border-amber-800 text-amber-950 font-medium hover:bg-amber-800 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-md shadow-amber-800/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
+        >
+          <FolderGit2 size={18} />
+          View All Projects
+          <ExternalLink size={16} />
+        </a>
       </div>
     </section>
   );
