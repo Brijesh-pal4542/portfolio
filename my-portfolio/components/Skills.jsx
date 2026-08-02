@@ -5,6 +5,8 @@ import {
   SiMongodb,
   SiTailwindcss,
 } from "react-icons/si";
+import { useState, useEffect, useRef } from "react";
+import { Code2, Layers, Server } from "lucide-react";
 
 const skillData = [
   {
@@ -47,6 +49,19 @@ const skills = [
   { name: "GitHub", icon: FaGithub },
 ];
 
+
+// Turns a raw percentage into a human label, since "90%" alone
+// doesn't tell a visitor much at a glance.
+function proficiencyLabel(level) {
+  if (level >= 90) return "Advanced";
+  if (level >= 75) return "Proficient";
+  return "Familiar";
+}
+
+// Paired with skillData — one icon per category, in the same order.
+const categoryIcons = [Code2, Layers, Server];
+
+
 function SkillCard({ skill }) {
   const Icon = skill.icon;
   return (
@@ -82,6 +97,28 @@ function Marquee({ reverse = false }) {
 }
 
 export default function Skills() {
+
+  const [inView, setInView] = useState(false);
+const techStackRef = useRef(null);
+
+// Trigger the bar-fill animation only once, the first time this
+// block scrolls into view — rather than bars being fully drawn
+// on page load with nothing to animate from.
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setInView(true);
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.25 }
+  );
+  if (techStackRef.current) observer.observe(techStackRef.current);
+  return () => observer.disconnect();
+}, []);
+
+
   return (
     // id="skills" — this is what Navbar's #skills link and the
     // scroll-spy IntersectionObserver actually need to find.
@@ -96,15 +133,15 @@ export default function Skills() {
           <span className="block shade italic">Skillset</span>
         </h2>
         <div className="flex items-center justify-center gap-3 mt-6">
-          <span className="h-[2px] w-12 md:w-20 bg-amber-800/60 rounded-full" />
+          <span className="h-0.5 w-12 md:w-20 bg-amber-800/60 rounded-full" />
           <span className="h-3 w-3 rounded-full bg-amber-800 shade" />
-          <span className="h-[2px] w-12 md:w-20 bg-amber-800/60 rounded-full" />
+          <span className="h-0.5 w-12 md:w-20 bg-amber-800/60 rounded-full" />
         </div>
       </div>
 
       {/* ---------- Marquee: framed in a rounded/dot-grid panel so it
           reads as one of your site's "cards" rather than a stray strip ---------- */}
-      <div className="relative overflow-hidden rounded-[3rem] dot-grid bg-amber-700/10 shadow-2xl h-50 py-10 flex flex-col justify-center">
+      <div className="relative overflow-hidden h-50 py-10 flex flex-col justify-center">
         <div className="absolute left-0 top-0 h-full w-28 bg-linear-to-r from-amber-300 to-transparent z-10" />
         <div className="absolute right-0 top-0 h-full w-28 bg-linear-to-l from-amber-300 to-transparent z-10" />
 
@@ -121,58 +158,75 @@ export default function Skills() {
       </div>
 
       {/* ---------- Technical stack cards ---------- */}
-      <div className="mt-16 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            {/* fixed: gradient typo + swapped zinc -> amber to match palette */}
-            <span className="px-5 py-2 rounded-full border border-amber-800 bg-linear-to-r from-amber-800 to-amber-600 text-sm text-amber-100 shade">
-              Technical Stack
+<div ref={techStackRef} className="mt-16 px-6">
+  <div className="max-w-7xl mx-auto">
+    <div className="text-center mb-16">
+      <span className="px-5 py-2 rounded-full border border-amber-800 bg-linear-to-r from-amber-800 to-amber-600 text-sm text-amber-100 shade">
+        Technical Stack
+      </span>
+      <p className="text-amber-900 mt-4 max-w-2xl mx-auto">
+        A comprehensive overview of my programming languages, frameworks,
+        databases and engineering concepts.
+      </p>
+    </div>
+
+    <div className="grid lg:grid-cols-3 gap-8">
+      {skillData.map((category, catIndex) => {
+        const Icon = categoryIcons[catIndex] ?? Code2;
+        return (
+          <div
+            key={category.title}
+            className="relative dot-grid border rounded-b-4xl p-8 pt-10
+            shadow-[0_0_40px_rgba(180,83,9,0.25)] hover:-translate-y-2 hover:shadow-[0_0_55px_rgba(180,83,9,0.4)]
+            transition-all duration-500"
+          >
+            {/* Circular icon badge straddling the top border —
+                reinforces the circular theme on every card */}
+            <div className="absolute -top-6 left-8 h-12 w-12 rounded-full bg-amber-800 border-4 border-amber-300 shade flex items-center justify-center shadow-md">
+              <Icon size={20} className="text-white" strokeWidth={2.2} />
+            </div>
+
+            {/* Numbered tag — justified since these three categories
+                are a genuine sequence (languages -> stack -> backend) */}
+            <span className="absolute top-4 right-6 font-serif text-3xl font-bold text-amber-700/30">
+              {String(catIndex + 1).padStart(2, "0")}
             </span>
-            <p className="text-amber-900 mt-4 max-w-2xl mx-auto">
-              A comprehensive overview of my programming languages, frameworks,
-              databases and engineering concepts.
-            </p>
-          </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            {skillData.map((category) => (
-              <div
-                key={category.title}
-                className="bg-amber-400/90 dot-grid border border-amber-800 rounded-3xl p-8
-                shadow-[0_0_40px_rgba(180,83,9,0.25)] hover:-translate-y-1.5
-                transition-all duration-500"
-              >
-                {/* explicit dark text — card background is light amber,
-                    so text can no longer rely on the page's default white */}
-                <h2 className="font-bold text-xl mb-8 tracking-wide text-amber-950">
-                  {category.title}
-                </h2>
+            <h2 className="font-bold text-xl mb-8 tracking-wide text-amber-950">
+              {category.title}
+            </h2>
 
-                <div className="space-y-7">
-                  {category.skills.map((skill) => (
-                    <div key={skill.name}>
-                      <div className="flex justify-between mb-2 text-sm text-amber-950">
-                        <span>{skill.name}</span>
-                        <span className="text-amber-800 font-semibold">
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div className="w-full h-2 rounded-full bg-amber-200 overflow-hidden">
-                        <div
-                          style={{ width: `${skill.level}%` }}
-                          className="h-full rounded-full bg-linear-to-r
-                          from-amber-600 via-amber-700 to-amber-900
-                          transition-all duration-1000"
-                        />
-                      </div>
-                    </div>
-                  ))}
+            <div className="space-y-7">
+              {category.skills.map((skill) => (
+                <div key={skill.name}>
+                  <div className="flex justify-between items-baseline mb-2 text-sm text-amber-950">
+                    <span className="font-semibold">{skill.name}</span>
+                    <span className="text-right">
+                      <span className="text-amber-800 font-semibold">
+                        {skill.level}%
+                      </span>
+                      <span className="block text-[11px] text-amber-800/70">
+                        {proficiencyLabel(skill.level)}
+                      </span>
+                    </span>
+                  </div>
+                  <div className="w-full h-2 rounded-full bg-amber-200 overflow-hidden">
+                    <div
+                      style={{ width: inView ? `${skill.level}%` : "0%" }}
+                      className="h-full rounded-full bg-linear-to-r
+                      from-amber-600 via-amber-700 to-amber-900
+                      transition-all duration-1000 ease-out"
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </div>
+        );
+      })}
+    </div>
+  </div>
+</div>
     </section>
   );
 }
