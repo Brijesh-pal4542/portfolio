@@ -4,6 +4,7 @@ import About from "../components/About"
 import Skills from "../components/Skills"
 import Projects from "../components/Projects"
 import Loader from "../components/Loader"
+import Journey from "../components/Journey"
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <About></About>
       <Skills></Skills>
       <Projects/>
+      <Journey/>
       <div className="h-100"></div>
    </div>
   )

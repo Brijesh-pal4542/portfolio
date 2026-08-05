@@ -173,7 +173,7 @@ function Navbar() {
       <div
         role="dialog"
         aria-modal="true"
-        className={`fixed top-0 right-0 h-screen z-50 overflow-hidden dot-grid bg-gradient-to-br from-amber-400 via-amber-500 to-amber-700 shade transition-all duration-500 overscroll-none ${panelWidth}`}
+        className={`fixed top-0 right-0 h-screen z-50 overflow-hidden bg-linear-to-br from-amber-400 via-amber-500 to-amber-700 shade transition-all duration-500 overscroll-none ${panelWidth}`}
         >
       
         <div
