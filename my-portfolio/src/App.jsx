@@ -6,6 +6,7 @@ import Projects from "../components/Projects"
 import Loader from "../components/Loader"
 import Journey from "../components/Journey"
 import Contact from "../components/Contact"
+import Footer from "../components/Footer"
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
       <Projects/>
       <Journey/>
       <Contact/>
-      <div className="h-100"></div>
+      <Footer/>
    </div>
   )
 }

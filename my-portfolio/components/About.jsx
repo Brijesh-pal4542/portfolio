@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import {
   Search,
   Trophy,
@@ -23,13 +24,38 @@ const badges = [
 ];
 
 function About() {
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  // Triggers the slide-in once, the first time the section scrolls
+  // into view — rather than animating on every scroll pass.
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 },
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   const scrollToContact = (e) => {
     e.preventDefault();
     document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="about" className="my-15 max-sm:my-25">
+    <section
+      id="about"
+      ref={sectionRef}
+      className={`my-15 max-sm:my-25 transition-all duration-1000 ease-out ${
+        visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-24"
+      }`}
+    >
       {/* ---------- Section heading ---------- */}
       <div className="text-center mb-12 relative">
         {/* Eyebrow label — small spaced-out caps read as "editorial"
