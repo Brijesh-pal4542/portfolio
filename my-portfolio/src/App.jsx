@@ -5,6 +5,7 @@ import Skills from "../components/Skills"
 import Projects from "../components/Projects"
 import Loader from "../components/Loader"
 import Journey from "../components/Journey"
+import Contact from "../components/Contact"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <Skills></Skills>
       <Projects/>
       <Journey/>
+      <Contact/>
       <div className="h-100"></div>
    </div>
   )
