@@ -52,7 +52,7 @@ function About() {
     <section
       id="about"
       ref={sectionRef}
-      className={`my-15 max-sm:my-25 transition-all duration-1000 ease-out ${
+      className={`my-15 max-sm:my-25 transition-all duration-700 ease-out ${
         visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-24"
       }`}
     >

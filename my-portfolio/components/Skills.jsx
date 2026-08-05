@@ -141,7 +141,7 @@ export default function Skills() {
     <section
       id="skills"
       ref={sectionRef}
-      className={`my-15 max-sm:my-25 transition-all duration-1000 ease-out ${
+      className={`my-15 max-sm:my-25 transition-all duration-700 ease-out ${
         sectionVisible
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-24"
